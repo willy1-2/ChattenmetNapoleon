@@ -646,6 +646,12 @@ Leerling vraag: `;
     }
   }
 
+  const clearResponse = () => {
+    setResponse('')
+    setStreamingResponse('')
+    setGroundingData(null)
+  }
+
   // Legacy non-streaming function (fallback)
   const sendMessage = async () => {
     const selectedFiles = getSelectedFiles()
