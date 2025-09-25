@@ -9,13 +9,15 @@ interface ResponseActionsProps {
   isMarkdown?: boolean
   isStreaming?: boolean
   className?: string
+  onClearResponse?: () => void
 }
 
 export default function ResponseActions({ 
   content, 
   isMarkdown = true, 
   isStreaming = false,
-  className = ""
+  className = "",
+  onClearResponse
 }: ResponseActionsProps) {
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copying' | 'success' | 'error'>('idle')
   const [wordDownloadStatus, setWordDownloadStatus] = useState<'idle' | 'generating' | 'success' | 'error'>('idle')
@@ -853,6 +855,18 @@ export default function ResponseActions({
         >
           <span>{getCopyButtonText()}</span>
         </button>
+
+        {/* Clear Response Button */}
+        {onClearResponse && (
+          <button
+            onClick={onClearResponse}
+            disabled={isStreaming}
+            className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-red-100 hover:bg-red-200 text-red-700 border border-red-200 hover:border-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+            title="Wis Napoleon's antwoord"
+          >
+            <span>🗑️ Wissen</span>
+          </button>
+        )}
       </div>
 
       {/* Universal Settings Dropdown */}

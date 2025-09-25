@@ -1135,6 +1135,7 @@ Leerling vraag: `;
                 content={isStreaming ? streamingResponse : response}
                 isMarkdown={true}
                 isStreaming={isStreaming}
+                onClearResponse={clearResponse}
               />
             )}
 
